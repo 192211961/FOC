@@ -1,0 +1,46 @@
+#include <stdio.h>
+
+int main() {
+    int num_people;                  // Number of people staying in the room
+    int is_company_business;         // Indicator for company business (0 or 1)
+    int age;                         // Customer's age
+    double base_price;               // Base price of the room
+    double discount_percentage = 0;  // Discount percentage to be applied
+    double final_price;              // Final cost of the room
+
+    // Prompt the user for input
+    printf("Enter the number of people: ");
+    scanf("%d", &num_people);
+
+    printf("Is the customer staying on company business? (1 for Yes, 0 for No): ");
+    scanf("%d", &is_company_business);
+
+    printf("Enter the customer's age: ");
+    scanf("%d", &age);
+
+    // Calculate the base price based on the number of people
+    if (num_people == 2) {
+        base_price = 85.0;
+    } else if (num_people == 3) {
+        base_price = 90.0;
+    } else if (num_people == 4) {
+        base_price = 95.0;
+    } else {
+        base_price = 95.0 + (num_people - 4) * 6.0;
+    }
+
+    // Apply discounts if applicable
+    if (is_company_business == 1) {
+        discount_percentage = 0.20;
+    } else if (age > 60) {
+        discount_percentage = 0.15;
+    }
+
+    // Calculate the final price after applying the discount
+    final_price = base_price - (base_price * discount_percentage);
+
+    // Print the cost of the room
+    printf("The cost of the room is: $%.2f\n", final_price);
+
+    return 0;
+}
