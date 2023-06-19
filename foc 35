@@ -1,0 +1,55 @@
+#include <stdio.h>
+
+int main() {
+    int n;
+    float total_grade_points = 0.0;
+    float total_units = 0.0;
+    char course_name[50];
+    char letter_grade;
+    float units;
+    float grade_points;
+    float GPA;
+
+    printf("Enter the number of courses: ");
+    scanf("%d", &n);
+
+    for (int i = 1; i <= n; i++) {
+        printf("\nCourse %d:\n", i);
+        printf("Enter the course name: ");
+        scanf(" %[^\n]", course_name);
+        printf("Enter the letter grade: ");
+        scanf(" %c", &letter_grade);
+        printf("Enter the number of units: ");
+        scanf("%f", &units);
+
+        switch (letter_grade) {
+            case 'A':
+                grade_points = 4.0;
+                break;
+            case 'B':
+                grade_points = 3.0;
+                break;
+            case 'C':
+                grade_points = 2.0;
+                break;
+            case 'D':
+                grade_points = 1.0;
+                break;
+            case 'F':
+                grade_points = 0.0;
+                break;
+            default:
+                printf("Invalid letter grade\n");
+                return 1;  // Exit the program with an error code
+        }
+
+        total_grade_points += grade_points * units;
+        total_units += units;
+    }
+
+    GPA = total_grade_points / total_units;
+
+    printf("\nYour GPA for the semester is: %.2f\n", GPA);
+
+    return 0;
+}
